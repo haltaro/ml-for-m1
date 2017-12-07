@@ -6,6 +6,8 @@
 
 そこで本記事では，M1グランプリ2017の決勝ファーストラウンドを分析し，最終決戦進出を分けた要因の考察に挑戦します．分析には[scikit-learn](http://scikit-learn.org/)の[主成分分析モジュール](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)を用います．[アドベントカレンダー](https://qiita.com/advent-calendar/2017/ml_and_math2017)の趣旨に則り，主成分分析の理論的背景もきちんとご紹介するつもりです．
 
+![2017](https://github.com/haltaro/ml-for-m1/blob/master/fig/2017.png)
+
 なお，本記事はM1グランプリの審査方針について意見を述べるものではなく，いかなる審査結果の不当性を訴えるものではありません．いつも面白い番組を作ってくださり，ありがとうございます！来年も楽しみです！
 
 # 2. 問題設定
