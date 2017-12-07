@@ -81,7 +81,9 @@ m1グランプリ2017では，(1)予選，(2)敗者復活戦，(3)決勝ファ�
 2. 誤差最小化による導出．
 3. 線形ガウスモデルを仮定した最尤法による導出（**確率的主成分分析** とも呼ばれます）．
 
-1については，本アドベントカレンダーの一日目で[@NoriakiOshita](https://qiita.com/NoriakiOshita)さんが[意味がわかる主成分分析](https://qiita.com/NoriakiOshita/items/460247bb57c22973a5f0)を書いてくださりました．3は難しいのでビショップ先生に譲りたいので，本記事では2についてご紹介します．
+1については，本アドベントカレンダーの一日目で[@NoriakiOshita](https://qiita.com/NoriakiOshita)さんが[意味がわかる主成分分析](https://qiita.com/NoriakiOshita/items/460247bb57c22973a5f0)を書いてくださりました．本記事では2についてご紹介します．3については[PRML](http://amzn.asia/02JzLFF)の12章をご参照ください．
+
+
 
 ## 3.2 実装
 
