@@ -8,4 +8,4 @@
 
 Please refer to [pca.ipynb](https://github.com/haltaro/ml-for-m1/blob/master/pca.ipynb).
 
-![2017](../fig/2017.png)
+![2017](https://github.com/haltaro/ml-for-m1/blob/master/fig/2017.png)
