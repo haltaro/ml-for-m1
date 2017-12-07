@@ -80,6 +80,30 @@ m1グランプリ2017では，(1)予選，(2)敗者復活戦，(3)決勝ファ�
 
 ## 3.4 過去大会
 
+![2001](https://github.com/haltaro/ml-for-m1/blob/master/fig/2001.png)
+
+![2002](https://github.com/haltaro/ml-for-m1/blob/master/fig/2002.png)
+
+![2003](https://github.com/haltaro/ml-for-m1/blob/master/fig/2003.png)
+
+![2004](https://github.com/haltaro/ml-for-m1/blob/master/fig/2004.png)
+
+![2005](https://github.com/haltaro/ml-for-m1/blob/master/fig/2005.png)
+
+![2006](https://github.com/haltaro/ml-for-m1/blob/master/fig/2006.png)
+
+![2007](https://github.com/haltaro/ml-for-m1/blob/master/fig/2007.png)
+
+![2008](https://github.com/haltaro/ml-for-m1/blob/master/fig/2008.png)
+
+![2009](https://github.com/haltaro/ml-for-m1/blob/master/fig/2009.png)
+
+![2010](https://github.com/haltaro/ml-for-m1/blob/master/fig/2010.png)
+
+![2015](https://github.com/haltaro/ml-for-m1/blob/master/fig/2015.png)
+
+![2016](https://github.com/haltaro/ml-for-m1/blob/master/fig/2016.png)
+
 # 4. おわりに
 
 # 5. 参考
