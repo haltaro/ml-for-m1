@@ -82,7 +82,7 @@ m1グランプリ2017では，(1)予選，(2)敗者復活戦，(3)決勝ファ�
 
 1については，本アドベントカレンダーの一日目で[@NoriakiOshita](https://qiita.com/NoriakiOshita)さんが[意味がわかる主成分分析](https://qiita.com/NoriakiOshita/items/460247bb57c22973a5f0)を書いてくださいました．本記事では2についてご紹介します．3については[PRML](http://amzn.asia/02JzLFF)の12章をご参照ください．
 
-まず，下図のように，$\{\mathbf{x}\}$
+まず，下図のように，$\{\bf{x}\}$
 
 ![pca](https://github.com/haltaro/ml-for-m1/blob/master/fig/pca.png)
 
