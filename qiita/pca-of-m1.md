@@ -84,6 +84,87 @@ m1グランプリ2017では，(1)予選，(2)敗者復活戦，(3)決勝ファ�
 
 ## 3.2 実装
 
+以下の環境で主成分分析を実施しました．
+
+* Ubuntu 16.04
+* [Python 3.6.2](https://www.python.org/)
+* [NumPy 1.13.1](http://www.numpy.org/)
+* [Pandas 0.20.3](https://pandas.pydata.org/)
+* [Matplotlib 2.0.2](https://matplotlib.org/)
+* [Scikit-learn 0.19.0](http://scikit-learn.org/stable/)
+
+[Jupyter notebook](http://jupyter.org/)は[こちら](https://github.com/haltaro/ml-for-m1/blob/master/pca.ipynb)です．遊んで頂けると嬉しいです．
+
+まず，必要なモジュールをインポートします．
+
+```python3
+import numpy as np
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+from sklearn import preprocessing # 前処理用
+from sklearn.decomposition import PCA # 主成分分析用
+```
+
+Matplotlibで日本語を表示するために，[Qiita，matplotlibで日本語を描画 on Ubuntu](https://qiita.com/conta_/items/4b031a44acceb137ec73)を参考に，次のような設定を行います．Ubuntu以外の場合は，適宜ご対応ください．
+
+```python3
+from matplotlib.font_manager import FontProperties
+font_path = '/usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf'
+font_prop = FontProperties(fname=font_path)
+matplotlib.rcParams['font.family'] = font_prop.get_name()
+```
+
+以降では，`data/`ディレクトリの`2017.csv`に採点結果が格納されていると仮定します．データの読み出しから主成分分析結果のプロットまで，一括して実施する関数`plot_m1(year)`を定義します．4章では過去大会のデータもプロットするので，`year`で開催年を指定できるようにします．
+
+```python3
+def plot_m1(year=2017):
+  """
+  `data/`ディレクトリにある`year`年の採点結果を読み出し，
+  主成分分析結果を描画し，dataframeを返す関数です．
+  - year: 分析対象とする大会の開催年．
+  """
+
+  # データの読み出し
+  df = pd.read_csv("data/{}.csv".format(year))
+  x = np.array(df.values)[:, 1:-1]
+  t = np.array([1 if i=="通過" else 0 for i in df["結果"].values])
+  x_scaled = preprocessing.scale(x) # 正規化
+  x_pca = PCA(n_components=2).fit_transform(x_scaled)
+  # 主成分空間に写像
+
+  plt.figure(figsize=[10, 4])
+
+  # 主成分空間で出場者をプロット．
+  plt.subplot(1, 2, 1)
+  for ii in range(len(t)):
+      plt.plot(x_pca[ii, 0], x_pca[ii, 1],
+               c= 'b' if t[ii] else 'r', marker='o', alpha=0.7)
+      plt.annotate(
+          "{}\n{}点".format(df.iloc[ii, 0][:3], sum(df.iloc[ii, 1:-1])),
+          x_pca[ii]+[.1, 0])
+  plt.xlim([min(x_pca[:, 0])-.5, max(x_pca[:, 0])+.8])
+  plt.gca().spines['right'].set_visible(False)
+  plt.gca().spines['top'].set_visible(False)
+
+  # 主成分空間で審査員をプロット．
+  plt.subplot(1, 2, 2)
+  judge = df.columns[1:-1]
+  comps = PCA(n_components=2).fit(x_scaled).components_
+  for ii in range(len(judge)):
+      plt.plot([0, comps[0, ii]], [0, comps[1, ii]],
+                c=cm.Greens(np.linalg.norm(comps[:, ii])))
+      plt.annotate(judge[ii], comps[:, ii])
+  plt.gca().spines['right'].set_visible(False)
+  plt.gca().spines['top'].set_visible(False)
+  plt.xlim([-1, 1]), plt.ylim([-1, 1])
+
+  return df
+```
+
+[`sklearn.decomposition.PCA`](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)クラスでは，引数`n_components`で主成分空間の次元数を指定できます．今回は可視化が目的なので，`2`を指定します．`fit_transform()`メソッドは，主成分空間の写像結果を返す関数です．
+
 ## 3.3 結果と考察
 
 以下を実行して，採点結果を可視化します．
@@ -364,3 +445,4 @@ M-1グランプリの決勝ファーストラウンドの採点結果を主成�
 * [Wikipedia，M1グランプリ](https://ja.wikipedia.org/wiki/M-1%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%97%E3%83%AA)
 * [P.M.ビショップ，パターン認識と機械学習](http://amzn.asia/02JzLFF)
 * [Qiita，意味がわかる主成分分析](https://qiita.com/NoriakiOshita/items/460247bb57c22973a5f0)
+* [Qiita，matplotlibで日本語を描画 on Ubuntu](https://qiita.com/conta_/items/4b031a44acceb137ec73)
